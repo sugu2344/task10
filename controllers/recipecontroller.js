@@ -58,7 +58,14 @@ const recipeController = {
     }
   },
   // deleteRecipe DELETE
-  deleteRecipe: (request, response) => {
+  deleteRecipe: async (request, response) => {
+    try {
+      const { id } = request.params;
+      await recipe.findByIdAndDelete(id);
+      response.json({ message: "recipe deleted sucessfully" });
+    } catch (error) {
+      response.status(500).json({ message: error.message });
+    }
     response.json({ message: "recipe deleted sucessfully" });
   },
 };
