@@ -39,8 +39,23 @@ const recipeController = {
     }
   },
   // updateRecipe PUT
-  updateRecipe: (request, response) => {
-    response.json({ message: "recipe updated sucessfully" });
+  updateRecipe: async (request, response) => {
+    try {
+      const { id } = request.params;
+      const { title, chefName, createdAt, instructions, ingredients } =
+        request.body;
+      const updateRecipe = {
+        title,
+        chefName,
+        createdAt,
+        instructions,
+        ingredients,
+      };
+      await recipe.findByIdAndUpdate(id, updateRecipe);
+      response.json({ message: updateRecipe });
+    } catch (error) {
+      response.status(500).json({ message: error.message });
+    }
   },
   // deleteRecipe DELETE
   deleteRecipe: (request, response) => {
