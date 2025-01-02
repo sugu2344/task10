@@ -19,7 +19,13 @@ const recipeController = {
     }
   },
   // getAllRecipes GET
-  getAllRecipes: (request, response) => {
+  getAllRecipes: async (request, response) => {
+    try {
+      const recipes = await recipe.find();
+      response.json(recipes);
+    } catch (error) {
+      response.status(500).json({ message: error.message });
+    }
     response.json({ message: " recipe get sucessful" });
   },
   // getRecipeById get by id
