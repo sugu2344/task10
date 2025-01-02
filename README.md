@@ -35,7 +35,8 @@ This task description explains the project objectives, key features, and tools u
 
 #### deployed data view in browser
 
-![browser view](https://github.com/user-attachments/assets/66414dc2-81c4-4897-8cb0-df9818f51ccf)
+![browser reupload](https://github.com/user-attachments/assets/0c0e400b-8f87-45dd-bb20-155f4d30c860)
+
 
 
 
