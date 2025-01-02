@@ -29,8 +29,14 @@ const recipeController = {
     response.json({ message: " recipe get sucessful" });
   },
   // getRecipeById get by id
-  getRecipeById: (request, response) => {
-    response.json({ message: " recipe get by id " });
+  getRecipeById: async (request, response) => {
+    try {
+      const { id } = request.params;
+      const recipeDetails = await recipe.findById(id);
+      response.json({ recipeDetails });
+    } catch (error) {
+      response.status(500).json({ message: error.message });
+    }
   },
   // updateRecipe PUT
   updateRecipe: (request, response) => {
